@@ -49,8 +49,7 @@ class PageAccount(object):
         if self.user is None:
             raise TypeError("User is not set!")
         self.browser.find_by_xpath(USER_LIST_LOCATOR.format(self.user.login)).first.click()
-        assert self.on_page() is True
-        return self
+        return self.on_page()
 
     def fill_password(self) -> PageAccount:
         """Fills the password field"""
@@ -73,8 +72,6 @@ class PageAccount(object):
 
     def check(self) -> PageAccount:
         """Activate the account"""
-        # self.browser.find_by_name(CHECKBOX_ACTIVATE).first.check()
-        # self.dump(element)
         self.browser.check(CHECKBOX_ACTIVATE)
         return self
 

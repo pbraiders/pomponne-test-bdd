@@ -47,7 +47,7 @@ def page_users(the_config, the_browser, the_database) -> PageUsers:
         sign_in(p_page_signin, AdminUserFactory().initialize(the_config["data"]["users"]))
         del p_page_signin
         # Visit users page
-        p_page_users.visit()
+        assert p_page_users.visit() is True
     return p_page_users
 
 

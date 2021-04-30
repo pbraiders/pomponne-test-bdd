@@ -28,14 +28,13 @@ class PageSignin(object):
         return self
 
     def on_page(self) -> bool:
-        """Test if we already are on the page"""
+        """Test if we are on the page"""
         return self.browser.title.lower() == TITLE.lower()
 
-    def visit(self) -> PageSignin:
+    def visit(self) -> bool:
         """Goes to the page"""
         self.browser.visit(urljoin(str(self.config['home']), str(self.config['signin'])))
-        assert self.browser.title == TITLE
-        return self
+        return self.on_page()
 
     def sign_out(self) -> PageSignin:
         """Goes to the sign out page"""

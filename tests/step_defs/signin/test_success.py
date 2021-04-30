@@ -29,11 +29,9 @@ def test_connecting() -> None:
 @given('I am on the signin page', target_fixture="page_signin")
 def page_signin(the_browser, the_config, the_database) -> PageSignin:
     """I am on the signin page."""
-    p_page = PageSignin(
-        browser=the_browser, config=the_config['urls'],
-        user=None)
+    p_page = PageSignin(browser=the_browser, config=the_config['urls'], user=None)
     if p_page.on_page() is False:
-        p_page.visit()
+        assert p_page.visit() is True
     return p_page
 
 
@@ -47,7 +45,7 @@ def deactivated_user(the_config, page_signin) -> None:
 def type_user(type, the_config, page_signin) -> None:
     """I am the <type> user."""
     assert isinstance(type, str)
-    switcher={
+    switcher = {
         "admin": AdminUserFactory().initialize(the_config["data"]["users"]),
         "simple": SimpleUserFactory().initialize(the_config["data"]["users"]),
         "deactivated": DisabledUserFactory().initialize(the_config["data"]["users"]),

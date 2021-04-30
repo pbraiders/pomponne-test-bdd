@@ -33,12 +33,12 @@ def test_password_is_mandatory():
     """Password is mandatory."""
 
 
-@given('I am on the simple user account page', target_fixture="page_user_account")
+@given('I am on the simple user account page',
+       target_fixture="page_user_account")
 def page_user_account(the_config, the_browser, the_database) -> PageAccount:
     """I am on the simple user account page."""
     p_page_account = PageAccount(
-        browser=the_browser,
-        config=the_config['urls'],
+        browser=the_browser, config=the_config['urls'],
         user=SimpleUserFactory().initialize(the_config["data"]["users"]))
     if p_page_account.on_page() is False:
         # Not on the account page. Sign in as admin
@@ -46,12 +46,13 @@ def page_user_account(the_config, the_browser, the_database) -> PageAccount:
         sign_in(p_page_signin, AdminUserFactory().initialize(the_config["data"]["users"]))
         del p_page_signin
         # Visit simple user account page
-        p_page_account.visit()
+        assert p_page_account.visit() is True
     return p_page_account
 
 
 @when('I send the credential with a different confirmed password')
-def send_credential_with_different_confirmed_password(page_user_account) -> None:
+def send_credential_with_different_confirmed_password(
+        page_user_account) -> None:
     """I send the credential with a different confirmed password."""
     s_confirmed_password = page_user_account.user.passwordc
     page_user_account.user.passwordc = s_confirmed_password + 'not the same'

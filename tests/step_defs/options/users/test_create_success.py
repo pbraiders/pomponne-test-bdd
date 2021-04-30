@@ -31,14 +31,15 @@ def page_users(the_config, the_browser, the_database) -> PageUsers:
     del p_page_signin
     # Go to Users page
     p_page_users = PageUsers(browser=the_browser, config=the_config['urls'], user=None)
-    p_page_users.visit()
+    assert p_page_users.visit() is True
     return p_page_users
 
 
 @when('I create a new user')
 def creates_user(page_users, new_user) -> None:
     """I create a new user."""
-    page_users.set_user(new_user).visit().fill_name().fill_password().confirm_password().click()
+    assert page_users.set_user(new_user).visit() is True
+    page_users.fill_name().fill_password().confirm_password().click()
 
 
 @then('I should see the success message')

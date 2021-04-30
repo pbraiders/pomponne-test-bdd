@@ -37,11 +37,9 @@ def test_wrong_password() -> None:
 @given('I am on the signin page', target_fixture="page_signin")
 def page_signin(the_browser, the_config, the_database) -> PageSignin:
     """I am on the signin page."""
-    p_page = PageSignin(
-        browser=the_browser, config=the_config['urls'],
-        user=None)
+    p_page = PageSignin(browser=the_browser, config=the_config['urls'], user=None)
     if p_page.on_page() is False:
-        p_page.visit()
+        assert p_page.visit() is True
     return p_page
 
 

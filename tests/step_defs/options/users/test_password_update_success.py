@@ -24,7 +24,8 @@ def test_update_password():
     """Update a password."""
 
 
-@given('I am on an activated user account page', target_fixture="page_user_account")
+@given('I am on an activated user account page',
+       target_fixture="page_user_account")
 def page_user_account(the_config, the_browser, the_database, new_user) -> PageAccount:
     """I am on an activated user account page"""
     # Sign in as admin
@@ -41,7 +42,7 @@ def page_user_account(the_config, the_browser, the_database, new_user) -> PageAc
     del p_page_signin
     # Go to the account page
     p_page_account = PageAccount(browser=the_browser, config=the_config['urls'], user=new_user)
-    p_page_account.visit()
+    assert p_page_account.visit() is True
     return p_page_account
 
 
@@ -52,7 +53,8 @@ def i_change_the_password(page_user_account) -> None:
 
 
 @ then('I can sign in to this account using the new password')
-def i_can_sign_in_to_this_account_using_the_new_password(the_config, the_browser, page_user_account) -> None:
+def i_can_sign_in_to_this_account_using_the_new_password(
+        the_config, the_browser, page_user_account) -> None:
     """I can sign in to this account using the new password."""
     p_page_signin = PageSignin(browser=the_browser, config=the_config['urls'], user=None)
     sign_in(p_page_signin, page_user_account.user)
