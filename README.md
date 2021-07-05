@@ -3,14 +3,17 @@
 
 # PBRaiders Pomponne BDD library
 
+[![Lint](https://github.com/pbraiders/pomponne-test-bdd/actions/workflows/python-package.yml/badge.svg?branch=main)](https://github.com/pbraiders/pomponne-test-bdd/actions/workflows/python-package.yml)
+[![CodeQL](https://github.com/pbraiders/pomponne-test-bdd/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/pbraiders/pomponne-test-bdd/actions/workflows/codeql-analysis.yml)
+
 Behavioral driven development library for [PBRaiders Pomponne](https://github.com/pbraiders/pomponne) using [pytest-bdd](https://github.com/pytest-dev/pytest-bdd) and [pytest-splinter](https://github.com/pytest-dev/pytest-splinter)
 
 ## Requirements
 
 - pbraiders: latest pomponne
-- python: ^3.8
-- python3-pip: ^20.1
-- python3-venv: ^3.8
+- python: ^3.9
+- python3-pip: ^21.1
+- python3-venv: ^3.9
 - python modules: selenium, pytest, pytest-bdd, pytest-splinter
 - web drivers: chromium-chromedriver or/and firefox-geckodriver
 
@@ -20,7 +23,7 @@ Behavioral driven development library for [PBRaiders Pomponne](https://github.co
 
 ### Installing PBRaiders
 
-Install the latest [PBRaiders Pomponne version](https://github.com/pbraiders/pomponne) using the [documentation](https://github.com/pbraiders/pomponne/blob/master/doc/install/install.fr_FR.md)
+Install the latest [PBRaiders pomponne version](https://github.com/pbraiders/pomponne) using the [documentation](https://github.com/pbraiders/pomponne/blob/master/doc/install/install.fr_FR.md)
 
 ### Installing Web Drivers
 
@@ -51,7 +54,9 @@ To set up the project on your local machine:
 1. Clone it from this GitHub repository.
 2. Run: `python3 -m venv .venv` from the command line in the project's root directory to create the virtual environment.
 3. Run: `source .venv/bin/activate` to activate the virtual environment.
-4. Run: `pip install wheel ; pip install -r requirements.txt` to install all the necessary packages.
+4. Run: `pip install --upgrade pip` to uprade pip.
+5. Run: `pip install --upgrade setuptools` to uprade setuptools.
+6. Run: `pip install wheel ; pip install -r requirements.txt` to install all the necessary packages.
 
 ## Running the tests
 
@@ -66,7 +71,7 @@ To generate a report, run the command pipenv run python -m pytest -k automated -
 
 ## Documentation
 
-- [Python](https://docs.python.org/3.8/)
+- [Python](https://docs.python.org/3.9/)
 - [pip](https://pip.pypa.io/en/stable/)
 - [pipenv](https://pipenv.pypa.io/en/latest/install/#installing-pipenv)
 - [pytest](https://docs.pytest.org/en/stable/contents.html)
