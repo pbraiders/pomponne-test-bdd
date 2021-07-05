@@ -3,7 +3,7 @@
         "host": {
             "host": "localhost",
             "port": 3306,
-            "dbname": "pbraidersdb",
+            "dbname": "pbrpomponnedb",
             "charset": "utf8mb4"
         },
         "credential": {
@@ -12,7 +12,10 @@
         }
     },
     "urls": {
-        "home": "https://www.pbraiders.fr",
+        "calendar": "",
+        "contacts": "contacts.php",
+        "contact-new": "contactnew.php",
+        "home": "https://www.pbraiders.fr/pomponne/",
         "graphs": "graphs.php",
         "logs": "logs.php",
         "signin": "login.php",
@@ -21,6 +24,19 @@
         "users": "users.php"
     },
     "data": {
+        "contacts": [
+            {
+                "lastname": "tc-lastname",
+                "firstname": "tc-firstname",
+                "tel": "+33(0)123456789",
+                "email": "test-contact@domain.tld",
+                "address": "69 rue des Lacs",
+                "address_more": "Île-de-France",
+                "city": "HOUILLES",
+                "zip": "78800",
+                "comment": "test-contact profile"
+            }
+        ],
         "users": {
             "admin": {
                 "login": "test-admin",
@@ -37,9 +53,71 @@
             "disabled": {
                 "login": "test-disabled",
                 "password": "disabledpassword",
-                "role": 10,
+                "role": 1,
                 "state": 0
             }
-        }
+        },
+        "config": [
+            {
+                "name": "max_rent_1",
+                "value": "300",
+                "role": 10
+            },
+            {
+                "name": "max_rent_2",
+                "value": "300",
+                "role": 10
+            },
+            {
+                "name": "max_rent_3",
+                "value": "300",
+                "role": 10
+            },
+            {
+                "name": "max_rent_4",
+                "value": "300",
+                "role": 10
+            },
+            {
+                "name": "max_rent_5",
+                "value": "300",
+                "role": 10
+            },
+            {
+                "name": "max_rent_6",
+                "value": "300",
+                "role": 10
+            },
+            {
+                "name": "max_rent_7",
+                "value": "300",
+                "role": 10
+            },
+            {
+                "name": "max_rent_8",
+                "value": "300",
+                "role": 10
+            },
+            {
+                "name": "max_rent_9",
+                "value": "300",
+                "role": 10
+            },
+            {
+                "name": "max_rent_10",
+                "value": "300",
+                "role": 10
+            },
+            {
+                "name": "max_rent_11",
+                "value": "300",
+                "role": 10
+            },
+            {
+                "name": "max_rent_12",
+                "value": "300",
+                "role": 10
+            }
+        ]
     }
 }

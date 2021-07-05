@@ -21,10 +21,14 @@ Hooks
 
 import json
 import random
-import sys
 import pytest
 from faker import Faker
+from faker.providers import address
+from faker.providers import internet
+from faker.providers import lorem
 from faker.providers import person
+from faker.providers import phone_number
+from faker.providers import python
 from splinter import Browser
 from pbraiders.database.adapter import PyMySQLAdapterFactory  # pylint: disable=import-error
 from pbraiders.user import User  # pylint: disable=import-error
@@ -47,7 +51,6 @@ def the_driver(pytestconfig):
 @pytest.fixture(scope="session")
 def the_config():
     """Loads the config file"""
-    data = '{}'
     try:
         with open(CONFIG_PATH) as s_config:
             data = json.load(s_config)
@@ -86,7 +89,12 @@ def the_faker() -> Faker:
     print(' \u2592 Faker locale choice:' + s_local)
     # Faker
     p_faker = Faker(s_local)
+    p_faker.add_provider(address)
+    p_faker.add_provider(internet)
+    p_faker.add_provider(lorem)
     p_faker.add_provider(person)
+    p_faker.add_provider(phone_number)
+    p_faker.add_provider(python)
     p_faker.seed_instance(random.randint(0, 999))
     return p_faker
 
