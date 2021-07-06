@@ -50,10 +50,6 @@ def contact_create(page_contact_new, contact_new) -> None:
     p_action.fill_lastname() \
         .fill_firstname() \
         .fill_phone() \
-        .fill_zip() \
-        .fill_city() \
-        .fill_address_more() \
-        .fill_address() \
         .fill_email()
     del p_action
     p_action = ContactCreateAction(_page=page_contact_new)

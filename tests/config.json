@@ -30,10 +30,6 @@
                 "firstname": "tc-firstname",
                 "tel": "+33(0)123456789",
                 "email": "test-contact@domain.tld",
-                "address": "69 rue des Lacs",
-                "address_more": "Île-de-France",
-                "city": "HOUILLES",
-                "zip": "78800",
                 "comment": "test-contact profile"
             }
         ],

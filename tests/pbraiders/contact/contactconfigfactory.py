@@ -17,8 +17,4 @@ class ContactConfigFactory(ContactAbstractFactory):
             lastname=config['lastname'],
             firstname=config['firstname'],
             tel=config['tel'],
-            email=config['email'],
-            address=config['address'],
-            address_more=config['address_more'],
-            city=config['city'],
-            zip=config['zip'])
+            email=config['email'])

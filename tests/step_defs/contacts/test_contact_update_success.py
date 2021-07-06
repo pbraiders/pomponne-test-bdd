@@ -49,11 +49,6 @@ def update_data(page_contact) -> None:
     page_contact.contact.firstname += '_updated'
     page_contact.contact.tel += '*'
     page_contact.contact.email += '_updated'
-    page_contact.contact.address += '_updated'
-    page_contact.contact.address_more += '_updated'
-    page_contact.contact.city += '_updated'
-    if len(page_contact.contact.zip) < 8:
-        page_contact.contact.zip += '*'
     page_contact.contact.comment = 'updated'
 
     # Fill the fields
@@ -61,10 +56,6 @@ def update_data(page_contact) -> None:
     p_action.fill_lastname() \
         .fill_firstname() \
         .fill_phone() \
-        .fill_zip() \
-        .fill_city() \
-        .fill_address_more() \
-        .fill_address() \
         .fill_email() \
         .fill_comment()
     del p_action

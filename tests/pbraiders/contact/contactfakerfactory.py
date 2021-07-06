@@ -20,8 +20,4 @@ class ContactFakerFactory(ContactAbstractFactory):
             firstname=self._faker.first_name(),
             tel=self._faker.phone_number(),
             email=self._faker.email(),
-            address=self._faker.street_address(),
-            address_more=self._faker.country(),
-            city=self._faker.city(),
-            zip=self._faker.postcode(),
             comment=self._faker.text())

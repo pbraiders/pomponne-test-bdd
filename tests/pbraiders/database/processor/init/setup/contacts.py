@@ -10,5 +10,5 @@ class Contacts(AbstractProcessor):
         print('Inserting contacts')
         self._pAdapter.execute(u"delete from `{d}`.`contact`;")
         self._pAdapter.executemany(
-            u"insert into `{d}`.`contact` (`lastname`, `firstname`, `tel`, `email`, `address`, `address_more`, `city`, `zip`, `comment`, `create_iduser`, `create_date`) VALUES (%(lastname)s, %(firstname)s, %(tel)s, %(email)s, %(address)s, %(address_more)s, %(city)s, %(zip)s, %(comment)s, 2, NOW());",
+            u"insert into `{d}`.`contact` (`lastname`, `firstname`, `tel`, `email`, `comment`, `create_iduser`, `create_date`) VALUES (%(lastname)s, %(firstname)s, %(tel)s, %(email)s, %(comment)s, 2, NOW());",
             contacts)

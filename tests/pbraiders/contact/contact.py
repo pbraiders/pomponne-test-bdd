@@ -11,10 +11,6 @@ class Contact(object):
     firstname: str = ''
     tel: str = ''
     email: str = ''
-    address: str = ''
-    address_more: str = ''
-    city: str = ''
-    zip: str = ''
     comment: str = ''
 
     def dump(self, obj):
