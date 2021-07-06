@@ -7,7 +7,8 @@ from pbraiders.contact import Contact
 from pbraiders.event import Event
 from pbraiders.pages.events import EventsPage
 from pbraiders.pages.events.actions import EventCreateAction
-from pbraiders.pages.events.actions import EventAgeWriteAction
+from pbraiders.pages.events.actions import EventTimeWriteAction
+from pbraiders.pages.events.actions import EventTypeWriteAction
 from pbraiders.pages.events.actions import EventContactWriteAction
 from pbraiders.pages.events.actions import EventHeadcountWriteAction
 from pbraiders.pages.events.actions import EventMoneyWriteAction
@@ -26,20 +27,22 @@ def new_event(driver: DriverAPI, config: dict, contact: Contact, event: Event) -
     p_action.fill_lastname() \
             .fill_firstname() \
             .fill_phone() \
-            .fill_zip() \
-            .fill_city() \
-            .fill_address_more() \
-            .fill_address() \
             .fill_email()
     del p_action
+    # Fill event headcount field
     p_action = EventHeadcountWriteAction(_page=p_page)
     p_action.fill_real() \
             .fill_planned()
     del p_action
-    p_action = EventAgeWriteAction(_page=p_page)
+    # Fill event type field
+    p_action = EventTypeWriteAction(_page=p_page)
     p_action.choose()
     del p_action
-    # Fill event arrh fields
+    # Fill event time slot field
+    p_action = EventTimeWriteAction(_page=p_page)
+    p_action.choose()
+    del p_action
+    # Fill event arrh field
     p_action = EventMoneyWriteAction(_page=p_page)
     p_action.choose()
     del p_action

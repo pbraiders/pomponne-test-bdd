@@ -24,10 +24,6 @@ def new_contact(driver: DriverAPI, config: dict, contact: Contact) -> bool:
     p_action.fill_lastname() \
             .fill_firstname() \
             .fill_phone() \
-            .fill_zip() \
-            .fill_city() \
-            .fill_address_more() \
-            .fill_address() \
             .fill_email()
     del p_action
 
@@ -45,10 +41,6 @@ def verify_contact(page: ContactPage) -> bool:
     return p_action.is_equal_lastname() is True and \
         p_action.is_equal_firstname() is True and\
         p_action.is_equal_phone() is True and\
-        p_action.is_equal_zip() is True and\
-        p_action.is_equal_city() is True and \
-        p_action.is_equal_address_more() is True and \
-        p_action.is_equal_address() is True and \
         p_action.is_equal_email() is True
 
 

@@ -12,8 +12,10 @@ from pbraiders.contact import ContactFakerFactory  # pylint: disable=import-erro
 from pbraiders.event import EventFakerFactory  # pylint: disable=import-error
 from pbraiders.pages.events import EventPage  # pylint: disable=import-error
 from pbraiders.pages.events.actions import EventUpdateAction  # pylint: disable=import-error
-from pbraiders.pages.events.actions import EventAgeReadAction  # pylint: disable=import-error
-from pbraiders.pages.events.actions import EventAgeWriteAction  # pylint: disable=import-error
+from pbraiders.pages.events.actions import EventTimeReadAction  # pylint: disable=import-error
+from pbraiders.pages.events.actions import EventTimeWriteAction  # pylint: disable=import-error
+from pbraiders.pages.events.actions import EventTypeReadAction  # pylint: disable=import-error
+from pbraiders.pages.events.actions import EventTypeWriteAction  # pylint: disable=import-error
 from pbraiders.pages.events.actions import EventContactReadAction  # pylint: disable=import-error
 from pbraiders.pages.events.actions import EventHeadcountReadAction  # pylint: disable=import-error
 from pbraiders.pages.events.actions import EventHeadcountWriteAction  # pylint: disable=import-error
@@ -72,8 +74,13 @@ def create_event_for_new_contact(page_event, the_faker) -> None:
             .fill_max()
     del p_action
 
-    # Fill event age fields
-    p_action = EventAgeWriteAction(_page=page_event)
+    # Fill event time slot fields
+    p_action = EventTimeWriteAction(_page=page_event)
+    p_action.choose()
+    del p_action
+
+    # Fill event type fields
+    p_action = EventTypeWriteAction(_page=page_event)
     p_action.choose()
     del p_action
 
@@ -113,10 +120,6 @@ def access_event(the_config, the_browser, page_event) -> None:
     assert p_action.is_equal_lastname() is True and \
         p_action.is_equal_firstname() is True and\
         p_action.is_equal_phone() is True and\
-        p_action.is_equal_zip() is True and\
-        p_action.is_equal_city() is True and \
-        p_action.is_equal_address_more() is True and \
-        p_action.is_equal_address() is True and \
         p_action.is_equal_email() is True
     del p_action
 
@@ -128,8 +131,13 @@ def access_event(the_config, the_browser, page_event) -> None:
         p_action.is_valid_max()
     del p_action
 
-    # check age
-    p_action = EventAgeReadAction(_page=page_event)
+    # check type
+    p_action = EventTypeReadAction(_page=page_event)
+    assert p_action.is_valid() is True
+    del p_action
+
+    # check time slot
+    p_action = EventTimeReadAction(_page=page_event)
     assert p_action.is_valid() is True
     del p_action
 

@@ -13,7 +13,8 @@ class Event(object):
     """Event."""
     date: Date
     headcount: Headcount
-    age: str = ''
+    type: str = ''
+    time: str = ''
     arrh: str = ''
     comment: str = ''
 

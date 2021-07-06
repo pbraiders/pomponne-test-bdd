@@ -18,8 +18,10 @@ from pbraiders.pages.contacts import ContactsPage  # pylint: disable=import-erro
 from pbraiders.pages.events import EventPage  # pylint: disable=import-error
 from pbraiders.pages.events import EventsPage  # pylint: disable=import-error
 from pbraiders.pages.events.actions import EventCreateAction  # pylint: disable=import-error
-from pbraiders.pages.events.actions import EventAgeReadAction  # pylint: disable=import-error
-from pbraiders.pages.events.actions import EventAgeWriteAction  # pylint: disable=import-error
+from pbraiders.pages.events.actions import EventTimeReadAction  # pylint: disable=import-error
+from pbraiders.pages.events.actions import EventTimeWriteAction  # pylint: disable=import-error
+from pbraiders.pages.events.actions import EventTypeReadAction  # pylint: disable=import-error
+from pbraiders.pages.events.actions import EventTypeWriteAction  # pylint: disable=import-error
 from pbraiders.pages.events.actions import EventContactReadAction  # pylint: disable=import-error
 from pbraiders.pages.events.actions import EventContactWriteAction  # pylint: disable=import-error
 from pbraiders.pages.events.actions import EventHeadcountReadAction  # pylint: disable=import-error
@@ -59,10 +61,6 @@ def create_event_for_new_contact(page_event_new, the_faker) -> None:
     p_action.fill_lastname() \
             .fill_firstname() \
             .fill_phone() \
-            .fill_zip() \
-            .fill_city() \
-            .fill_address_more() \
-            .fill_address() \
             .fill_email()
     del p_action
     # Fill event headcount fields
@@ -70,8 +68,12 @@ def create_event_for_new_contact(page_event_new, the_faker) -> None:
     p_action.fill_real() \
             .fill_planned()
     del p_action
-    # Fill event age fields
-    p_action = EventAgeWriteAction(_page=page_event_new)
+    # Fill event type fields
+    p_action = EventTypeWriteAction(_page=page_event_new)
+    p_action.choose()
+    del p_action
+    # Fill event time slot fields
+    p_action = EventTimeWriteAction(_page=page_event_new)
     p_action.choose()
     del p_action
     # Fill event arrh fields
@@ -111,18 +113,18 @@ def access_event(the_config, the_browser, page_event_new) -> None:
     assert p_action.is_equal_lastname() is True and \
         p_action.is_equal_firstname() is True and\
         p_action.is_equal_phone() is True and\
-        p_action.is_equal_zip() is True and\
-        p_action.is_equal_city() is True and \
-        p_action.is_equal_address_more() is True and \
-        p_action.is_equal_address() is True and \
         p_action.is_equal_email() is True
     del p_action
     # Check headcount
     p_action = EventHeadcountReadAction(_page=page_event_new)
     assert p_action.is_valid_real() is True and p_action.is_valid_planned()
     del p_action
-    # check age
-    p_action = EventAgeReadAction(_page=page_event_new)
+    # check type
+    p_action = EventTypeReadAction(_page=page_event_new)
+    assert p_action.is_valid() is True
+    del p_action
+    # check time slot
+    p_action = EventTimeReadAction(_page=page_event_new)
     assert p_action.is_valid() is True
     del p_action
     # check arrh
